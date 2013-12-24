@@ -1,18 +1,18 @@
 module.exports = function(grunt) {
-		require('load-grunt-tasks')(grunt);
-	
+        require('load-grunt-tasks')(grunt);
+    
     grunt.initConfig({
         kmc: {
             my: {
                 options:{
-	            		depFilePath: 'modules.js',
-	            		packages: [
-	                    {
-	                        name: 'my',
-	                        charset:'utf-8',
-	                        path: 'src/'
-	                    }
-	                ],
+                        depFilePath: 'modules.js',
+                        packages: [
+                        {
+                            name: 'my',
+                            charset:'utf-8',
+                            path: 'src/'
+                        }
+                    ],
                 },
                 files: [
                     {
@@ -39,9 +39,9 @@ module.exports = function(grunt) {
                 files:[
                     {
                         expand:true,
-				                cwd:'src/',
-				                src:['**/*.css'],
-				                dest:'build/'
+                                cwd:'src/',
+                                src:['**/*.css'],
+                                dest:'build/'
                     }
                 ]
             }
