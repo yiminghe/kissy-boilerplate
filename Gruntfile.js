@@ -1,18 +1,18 @@
-module.exports = function(grunt) {
-        require('load-grunt-tasks')(grunt);
-    
+module.exports = function (grunt) {
+    require('load-grunt-tasks')(grunt);
+
     grunt.initConfig({
         kmc: {
             my: {
-                options:{
-                        depFilePath: 'modules.js',
-                        packages: [
+                options: {
+                    depFilePath: 'modules.js',
+                    packages: [
                         {
                             name: 'my',
-                            charset:'utf-8',
+                            charset: 'utf-8',
                             path: 'src/'
                         }
-                    ],
+                    ]
                 },
                 files: [
                     {
@@ -34,29 +34,29 @@ module.exports = function(grunt) {
                 }
             }
         },
-        copy:{
-            my:{
-                files:[
+        copy: {
+            my: {
+                files: [
                     {
-                        expand:true,
-                                cwd:'src/',
-                                src:['**/*.css'],
-                                dest:'build/'
+                        expand: true,
+                        cwd: 'src/',
+                        src: ['**/*.css'],
+                        dest: 'build/'
                     }
                 ]
             }
         },
-        cssmin:{
-            my:{
-                expand:true,
-                cwd:'src/',
-                src:['**/*.css'],
-                dest:'build/',
-                ext:'-min.css'
+        cssmin: {
+            my: {
+                expand: true,
+                cwd: 'src/',
+                src: ['**/*.css'],
+                dest: 'build/',
+                ext: '-min.css'
             }
         },
         clean: ["build/"]
     });
-    
-    return grunt.registerTask('default', ['kmc', 'uglify','copy','cssmin']);
+
+    return grunt.registerTask('default', ['kmc', 'uglify', 'copy', 'cssmin']);
 };
