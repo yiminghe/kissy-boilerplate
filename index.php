@@ -39,7 +39,7 @@
       <p><button id='add'>add</button></p>
     </div>
     <script>
-        KISSY.use('my/index',function(S, my){
+        KISSY.use('my/',function(S, my){
             my.init(document.getElementById('a'),document.getElementById('b'),document.getElementById('c'),document.getElementById('add'));
         });
     </script>
