@@ -1,0 +1,1 @@
+KISSY.config("modules",{"my/adder":{requires:["dom"]},"my/index":{requires:["my/index.css","event","my/adder"]}});

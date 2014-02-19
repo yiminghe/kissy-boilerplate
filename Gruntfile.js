@@ -3,7 +3,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         kmc: {
-            my: {
+            concat: {
                 options: {
                     depFilePath: 'modules.js',
                     packages: [
@@ -17,7 +17,30 @@ module.exports = function (grunt) {
                 files: [
                     {
                         src: "src/my/index.js",
-                        dest: "build/my/index.js"
+                        dest: "build-concat/my/index.js"
+                    }
+                ]
+            },
+            
+            combo:{
+                options: {
+                    depFilePath: 'build-combo/my/modules.js',
+                    comboOnly: true,
+                    fixModuleName:true,
+                    comboMap: true,
+                    packages: [
+                        {
+                            name: 'my',
+                            charset: 'utf-8',
+                            path: 'build-combo/'
+                        }
+                    ]
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'build-combo/',
+                        src: [ '**/*.js' ]
                     }
                 ]
             }
@@ -28,35 +51,65 @@ module.exports = function (grunt) {
                     ascii_only: true
                 }
             },
-            my: {
-                files: {
-                    'build/my/index-min.js': ['build/my/index.js']
-                }
+            concat: {
+                files: [{
+                    expand: true,
+                    cwd: 'build-concat/',
+                    src: ['**/*.js', '!*-min.js'],
+                    dest: 'build-concat/',
+                    ext:'-min.js'
+                }]
+            },
+            combo:{
+                files: [{
+                    expand: true,
+                    cwd: 'build-combo/',
+                    src: ['**/*.js', '!*-min.js'],
+                    dest: 'build-combo/',
+                    ext:'-min.js'
+                }]
             }
         },
         copy: {
-            my: {
+            concat: {
                 files: [
                     {
                         expand: true,
                         cwd: 'src/',
                         src: ['**/*.css'],
-                        dest: 'build/'
+                        dest: 'build-concat/'
+                    }
+                ]
+            },
+            combo: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/',
+                        src: ['**/*'],
+                        dest: 'build-combo/'
                     }
                 ]
             }
         },
         cssmin: {
-            my: {
+            concat: {
                 expand: true,
                 cwd: 'src/',
                 src: ['**/*.css'],
-                dest: 'build/',
+                dest: 'build-concat/',
+                ext: '-min.css'
+            },
+            combo: {
+                expand: true,
+                cwd: 'src/',
+                src: ['**/*.css'],
+                dest: 'build-combo/',
                 ext: '-min.css'
             }
         },
-        clean: ["build/"]
+        clean: ["build-concat/","build-combo/"]
     });
 
-    return grunt.registerTask('default', ['kmc', 'uglify', 'copy', 'cssmin']);
+    return grunt.registerTask('default', ['copy','kmc', 'uglify',  'cssmin']);
 };
