@@ -10,21 +10,21 @@ module.exports = function (grunt) {
                         {
                             name: 'my',
                             charset: 'utf-8',
-                            path: 'src/'
+                            path: 'statics/src/'
                         }
                     ]
                 },
                 files: [
                     {
-                        src: "src/my/index.js",
-                        dest: "build-concat/my/index.js"
+                        src: "statics/src/my/index.js",
+                        dest: "statics/build-concat/my/index.js"
                     }
                 ]
             },
             
             combo:{
                 options: {
-                    depFilePath: 'build-combo/my/modules.js',
+                    depFilePath: 'statics/build-combo/my/modules.js',
                     comboOnly: true,
                     fixModuleName:true,
                     comboMap: true,
@@ -32,14 +32,14 @@ module.exports = function (grunt) {
                         {
                             name: 'my',
                             charset: 'utf-8',
-                            path: 'build-combo/'
+                            path: 'statics/build-combo/'
                         }
                     ]
                 },
                 files: [
                     {
                         expand: true,
-                        cwd: 'build-combo/',
+                        cwd: 'statics/build-combo/',
                         src: [ '**/*.js' ]
                     }
                 ]
@@ -54,18 +54,18 @@ module.exports = function (grunt) {
             concat: {
                 files: [{
                     expand: true,
-                    cwd: 'build-concat/',
+                    cwd: 'statics/build-concat/',
                     src: ['**/*.js', '!**/*-min.js'],
-                    dest: 'build-concat/',
+                    dest: 'statics/build-concat/',
                     ext:'-min.js'
                 }]
             },
             combo:{
                 files: [{
                     expand: true,
-                    cwd: 'build-combo/',
+                    cwd: 'statics/build-combo/',
                     src: ['**/*.js', '!**/*-min.js'],
-                    dest: 'build-combo/',
+                    dest: 'statics/build-combo/',
                     ext:'-min.js'
                 }]
             }
@@ -75,9 +75,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'src/',
+                        cwd: 'statics/src/',
                         src: ['**/*.css'],
-                        dest: 'build-concat/'
+                        dest: 'statics/build-concat/'
                     }
                 ]
             },
@@ -85,9 +85,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'src/',
+                        cwd: 'statics/src/',
                         src: ['**/*'],
-                        dest: 'build-combo/'
+                        dest: 'statics/build-combo/'
                     }
                 ]
             }
@@ -95,16 +95,16 @@ module.exports = function (grunt) {
         cssmin: {
             concat: {
                 expand: true,
-                cwd: 'src/',
+                cwd: 'statics/src/',
                 src: ['**/*.css'],
-                dest: 'build-concat/',
+                dest: 'statics/build-concat/',
                 ext: '-min.css'
             },
             combo: {
                 expand: true,
-                cwd: 'src/',
+                cwd: 'statics/src/',
                 src: ['**/*.css'],
-                dest: 'build-combo/',
+                dest: 'statics/build-combo/',
                 ext: '-min.css'
             }
         },
