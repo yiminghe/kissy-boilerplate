@@ -6,8 +6,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('./lib/xtpl-engine').renderFile);
 
 var statics='statics';
-var staticsPrefix = '/statics';
-var staticsDir = path.join(__dirname, 'statics');
+var staticsPrefix = '/' + statics;
+var staticsDir = path.join(__dirname, statics);
 
 var flexCombo = require('flex-combo');
 
@@ -19,7 +19,7 @@ app.use(staticsPrefix,express['static'](staticsDir));
 
 var comboConfig = {};
 comboConfig[staticsPrefix] = statics;
-var comboInst = flexCombo(staticsDir, comboConfig);
+var comboInst = flexCombo(__dirname, comboConfig);
 app.use(comboInst);
 
 
