@@ -5,6 +5,9 @@ app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('./lib/xtpl-engine').renderFile);
 
+var statics='statics';
+var staticsPrefix = '/statics';
+var staticsDir = path.join(__dirname, 'statics');
 
 var flexCombo = require('flex-combo');
 
@@ -12,14 +15,15 @@ app.use(express.favicon());
 app.use(express.compress());
 app.use(express.cookieParser());
 app.use(express.bodyParser());
-app.use('/statics',express['static'](__dirname+'/statics'));
+app.use(staticsPrefix,express['static'](staticsDir));
+
+var comboConfig = {};
+comboConfig[staticsPrefix] = statics;
+var comboInst = flexCombo(staticsDir, comboConfig);
+app.use(comboInst);
 
 
-var comboInst = flexCombo(__dirname+'/statics');
-app.use('/statics',comboInst);
-
-
-app.use('/statics',express.directory(__dirname + '/statics'));
+app.use(staticsPrefix,express.directory(staticsDir));
 app.use(app.router);
 app.use(express.errorHandler());
 
