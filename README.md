@@ -14,9 +14,9 @@ steps
 - build
   - kissy-xtemplate -p statics/src/
   - grunt
-  
-- dev: http://localhost:8111/
-- concat production: http://localhost:8111/?concat=1
-- combo production: http://localhost:8111/?combo=1
-- concat&min production: http://localhost:8111/?concat=1&min=1
-- combo&min production: http://localhost:8111/?combo=1&min=1
+- start: node app
+- dev: [http://localhost:8111/](http://localhost:8111/)
+- concat production: [http://localhost:8111/?concat=1](http://localhost:8111/?concat=1)
+- combo production: [http://localhost:8111/?combo=1](http://localhost:8111/?combo=1)
+- concat&min production: [http://localhost:8111/?concat=1&min=1](http://localhost:8111/?concat=1&min=1)
+- combo&min production: [http://localhost:8111/?combo=1&min=1](http://localhost:8111/?combo=1&min=1)
