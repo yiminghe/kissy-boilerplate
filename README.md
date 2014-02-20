@@ -12,7 +12,7 @@ steps
 - npm install kissy@1.4.1-5 -g
 
 - build
-  - kissy -p statics/src/
+  - kissy-xtemplate -p statics/src/
   - grunt
   
 - dev: http://localhost:8111/
