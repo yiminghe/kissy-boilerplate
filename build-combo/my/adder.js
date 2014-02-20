@@ -1,8 +1,8 @@
-KISSY.add('my/adder',['dom'], function(S,require){
-    var Dom = require('dom');
+KISSY.add('my/adder',['./adder.css'], function(S, require){
+    require('./adder.css');
     return {
-        add: function(a,b,el){
-            return Dom.html(el,a + b);
+        add: function(a,b){
+            return a + b;
         }
     };
 });

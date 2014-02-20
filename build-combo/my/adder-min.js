@@ -1,1 +1,1 @@
-KISSY.add("my/adder",["dom"],function(a,b){var c=b("dom");return{add:function(a,b,d){return c.html(d,a+b)}}});
+KISSY.add("my/adder",["./adder.css"],function(a,b){return b("./adder.css"),{add:function(a,b){return a+b}}});

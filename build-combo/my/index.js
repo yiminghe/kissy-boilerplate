@@ -6,12 +6,16 @@ KISSY.add('my/index',['./index.css', 'event', './adder', 'xtemplate/runtime', '.
     var tpl = require('./index-xtpl');
     var Dom = require('dom');
     return {
-        init:function(a,b,el,btn){
+        init:function(){
             Dom.append(Dom.create(new XTemplate(tpl).render({
                 title:'test'
             })),document.body);
-            Event.on(btn,'click',function(){
-                adder.add(parseInt(a.value),parseInt(b.value),el);
+            var a = Dom.get('#a');
+            var b = Dom.get('#b');
+            var c = Dom.get('#c');
+            var add = Dom.get('#add');
+            Event.on(add,'click',function(){
+                c.innerHTML = adder.add(parseInt(a.value),parseInt(b.value));
             });
         }
     };
