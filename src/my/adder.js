@@ -1,8 +1,7 @@
-KISSY.add(function(S,require){
-    var Dom = require('dom');
+KISSY.add(function(S){
     return {
-        add: function(a,b,el){
-            return Dom.html(el,a + b);
+        add: function(a,b){
+            return a + b;
         }
     };
 });

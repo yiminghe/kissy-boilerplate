@@ -1,21 +1,5 @@
-/*
-combined files : 
-
-my/adder
-my/index-xtpl
-my/index
-
-*/
-KISSY.add('my/adder',['dom'], function(S,require){
-    var Dom = require('dom');
-    return {
-        add: function(a,b,el){
-            return Dom.html(el,a + b);
-        }
-    };
-});
 /** Compiled By kissy-xtemplate */
-KISSY.add('my/index-xtpl',function (S, require, exports, module) {
+KISSY.add(function (S, require, exports, module) {
         /*jshint quotmark:false, loopfunc:true, indent:false, asi:true, unused:false, boss:true*/
         return function (scope, S, undefined) {
             var buffer = "",
@@ -36,22 +20,4 @@ KISSY.add('my/index-xtpl',function (S, require, exports, module) {
             buffer += '</p>\r\n   <div class=\'adder\'>\r\n      <p>a: <input id=\'a\'/></p>\r\n      <p>b: <input id=\'b\'/></p>\r\n      <p>result: <span id=\'c\'></span></p>\r\n      <p><button id=\'add\'>add</button></p>\r\n    </div>';
             return buffer;
         };
-});
-KISSY.add('my/index',['./index.css', 'event', './adder', 'xtemplate/runtime', './index-xtpl', 'dom'], function(S,require){
-    require('./index.css');
-    var Event = require('event');
-    var adder = require('./adder');
-    var XTemplate = require('xtemplate/runtime');
-    var tpl = require('./index-xtpl');
-    var Dom = require('dom');
-    return {
-        init:function(a,b,el,btn){
-            Dom.append(Dom.create(new XTemplate(tpl).render({
-                title:'test'
-            })),document.body);
-            Event.on(btn,'click',function(){
-                adder.add(parseInt(a.value),parseInt(b.value),el);
-            });
-        }
-    };
 });

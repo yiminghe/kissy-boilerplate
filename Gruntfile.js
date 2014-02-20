@@ -55,7 +55,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'build-concat/',
-                    src: ['**/*.js', '!*-min.js'],
+                    src: ['**/*.js', '!**/*-min.js'],
                     dest: 'build-concat/',
                     ext:'-min.js'
                 }]
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'build-combo/',
-                    src: ['**/*.js', '!*-min.js'],
+                    src: ['**/*.js', '!**/*-min.js'],
                     dest: 'build-combo/',
                     ext:'-min.js'
                 }]

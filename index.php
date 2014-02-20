@@ -41,15 +41,9 @@
     ?>
 </head>
 <body>
-    <div class='adder'>
-      <p>a: <input id='a'/></p>
-      <p>b: <input id='b'/></p>
-      <p>result: <span id='c'></span></p>
-      <p><button id='add'>add</button></p>
-    </div>
     <script>
         KISSY.use('my/',function(S, my){
-            my.init(document.getElementById('a'),document.getElementById('b'),document.getElementById('c'),document.getElementById('add'));
+            my.init();
         });
     </script>
 </body>
