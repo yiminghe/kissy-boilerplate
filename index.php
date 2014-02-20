@@ -41,6 +41,12 @@
     ?>
 </head>
 <body>
+    <div id='head'>
+        placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder 
+        placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder 
+        placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder 
+        placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder 
+    </div>
     <script>
         KISSY.use('my/',function(S, my){
             my.init();
