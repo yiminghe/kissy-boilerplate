@@ -9,7 +9,6 @@ var statics='statics';
 var staticsPrefix = '/' + statics;
 var staticsDir = path.join(__dirname, statics);
 
-var flexCombo = require('flex-combo');
 
 app.use(express.favicon());
 app.use(express.compress());
@@ -17,10 +16,8 @@ app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(staticsPrefix,express['static'](staticsDir));
 
-var comboConfig = {};
-comboConfig[staticsPrefix] = statics;
-var comboInst = flexCombo(__dirname, comboConfig);
-app.use(comboInst);
+
+app.use(staticsPrefix,require('./lib/combo')(staticsDir));
 
 
 app.use(staticsPrefix,express.directory(staticsDir));
@@ -29,7 +26,11 @@ app.use(express.errorHandler());
 
 
 app.get('/',function(req,res){
-    res.send('wow');
+    res.render('index',{
+        query: req.query
+    });
 });
 
 app.listen(8111);
+
+console.log('open http://localhost:8111');

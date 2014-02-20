@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script 
+    {{#if query.concat||query.combo}}
+        {{#if query.min}}
+            src='http://g.tbcdn.cn/kissy/k/1.4.1/??seed-min.js,import-style-min.js' data-config='{combine:true}' 
+        {{else}}
+            src='http://g.tbcdn.cn/kissy/k/1.4.1/??seed.js,import-style.js' data-config='{combine:true}' 
+        {{/if}}
+    {{else}}
+            src='http://g.tbcdn.cn/kissy/k/1.4.1/seed.js' 
+    {{/if}} 
+    ></script>
+    <script>
+        KISSY.config({
+            packages:[{
+                name:'my',
+                {{#if query.concat}}
+                    path:'/statics/build-concat'
+                {{else}}
+                    {{#if query.combo}}
+                        path:'/statics/build-combo'
+                    {{else}}
+                        path:'/statics/src'
+                    {{/if}}
+                {{/if}}
+            }]
+        });
+    </script> 
+    
+    {{#if query.concat}}
+        <script src='/statics/build-concat/my/modules.js'></script>
+        <script>KISSY.importStyle('my/index');</script>
+    {{/if}} 
+    
+    {{#if query.combo}}
+        <script src='/statics/build-combo/my/modules.js'></script>
+        <script>KISSY.importStyle('my/index');</script>
+    {{/if}}
+    
+    
+</head>
+<body>
+    <div id='head'>
+        placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder 
+        placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder 
+        placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder 
+        placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder 
+    </div>
+    <script>
+        KISSY.use('my/',function(S, my){
+            my.init();
+        });
+    </script>
+</body>
+</html>

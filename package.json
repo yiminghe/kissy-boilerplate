@@ -9,8 +9,7 @@
     "grunt-contrib-cssmin": "~0.6.0",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-kmc": "~0.1",
-    "express": "~3.4",
-    "flex-combo": "~0.5"
+    "express": "~3.4"
   },
   "repository": {
     "type": "git",
