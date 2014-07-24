@@ -1,6 +1,6 @@
-KISSY.add('my/index',['./index.css', 'event', './adder', 'xtemplate/runtime', './index-xtpl', 'dom'], function(S,require){
+KISSY.add('my/index',['./index.css', 'event/dom', './adder', 'xtemplate/runtime', './index-xtpl', 'dom'], function(S,require){
     require('./index.css');
-    var Event = require('event');
+    var Event = require('event/dom');
     var adder = require('./adder');
     var XTemplate = require('xtemplate/runtime');
     var tpl = require('./index-xtpl');

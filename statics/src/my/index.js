@@ -1,6 +1,6 @@
 KISSY.add(function(S,require){
     require('./index.css');
-    var Event = require('event');
+    var Event = require('event/dom');
     var adder = require('./adder');
     var XTemplate = require('xtemplate/runtime');
     var tpl = require('./index-xtpl');

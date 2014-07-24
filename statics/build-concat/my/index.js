@@ -17,29 +17,36 @@ KISSY.add('my/adder',['./adder.css'], function(S, require){
 /** Compiled By kissy-xtemplate */
 KISSY.add('my/index-xtpl',function (S, require, exports, module) {
         /*jshint quotmark:false, loopfunc:true, indent:false, asi:true, unused:false, boss:true*/
-        return function (scope, S, undefined) {
-            var buffer = "",
-                config = this.config,
-                engine = this,
-                moduleWrap, utils = config.utils;
-            if (typeof module !== "undefined" && module.kissy) {
-                moduleWrap = module;
+        var t = function (scope, buffer, payload, undefined) {
+            var engine = this,
+                nativeCommands = engine.nativeCommands,
+                utils = engine.utils;
+            if ("5.0.0" !== S.version) {
+                throw new Error("current xtemplate file(" + engine.name + ")(v5.0.0) need to be recompiled using current kissy(v" + S.version + ")!");
             }
-            var runBlockCommandUtil = utils.runBlockCommand,
-                renderOutputUtil = utils.renderOutput,
-                getPropertyUtil = utils.getProperty,
-                runInlineCommandUtil = utils.runInlineCommand,
-                getPropertyOrRunCommandUtil = utils.getPropertyOrRunCommand;
-            buffer += '   <p>';
-            var id0 = getPropertyOrRunCommandUtil(engine, scope, {}, "title", 0, 1);
-            buffer += renderOutputUtil(id0, true);
-            buffer += '</p>\r\n   <div class=\'adder\'>\r\n      <p>a: <input id=\'a\'/></p>\r\n      <p>b: <input id=\'b\'/></p>\r\n      <p>result: <span id=\'c\'></span></p>\r\n      <p><button id=\'add\'>add</button></p>\r\n    </div>';
+            var callCommandUtil = utils.callCommand,
+                eachCommand = nativeCommands.each,
+                withCommand = nativeCommands["with"],
+                ifCommand = nativeCommands["if"],
+                setCommand = nativeCommands.set,
+                includeCommand = nativeCommands.include,
+                parseCommand = nativeCommands.parse,
+                extendCommand = nativeCommands.extend,
+                blockCommand = nativeCommands.block,
+                macroCommand = nativeCommands.macro,
+                debuggerCommand = nativeCommands["debugger"];
+            buffer.write('   <p>');
+            var id0 = scope.resolve(["title"]);
+            buffer.write(id0, true);
+            buffer.write('</p>\r\n   <div class=\'adder\'>\r\n      <p>a: <input id=\'a\'/></p>\r\n      <p>b: <input id=\'b\'/></p>\r\n      <p>result: <span id=\'c\'></span></p>\r\n      <p><button id=\'add\'>add</button></p>\r\n    </div>');
             return buffer;
         };
+t.TPL_NAME = module.name;
+return t;
 });
-KISSY.add('my/index',['./index.css', 'event', './adder', 'xtemplate/runtime', './index-xtpl', 'dom'], function(S,require){
+KISSY.add('my/index',['./index.css', 'event/dom', './adder', 'xtemplate/runtime', './index-xtpl', 'dom'], function(S,require){
     require('./index.css');
-    var Event = require('event');
+    var Event = require('event/dom');
     var adder = require('./adder');
     var XTemplate = require('xtemplate/runtime');
     var tpl = require('./index-xtpl');

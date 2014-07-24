@@ -5,25 +5,30 @@
   <script 
     {{#if query.concat||query.combo}}
         {{#if query.min}}
-            src='http://g.tbcdn.cn/kissy/k/1.4.1/??seed-min.js,import-style-min.js' data-config='{combine:true}' 
+            src='http://localhost:8888/kissy/build/??seed.js,import-style.js' data-config='{combine:true}' 
         {{else}}
-            src='http://g.tbcdn.cn/kissy/k/1.4.1/??seed.js,import-style.js' data-config='{combine:true}' 
+            src='http://localhost:8888/kissy/build/??seed-debug.js,import-style-debug.js' data-config='{combine:true}' 
         {{/if}}
     {{else}}
-            src='http://g.tbcdn.cn/kissy/k/1.4.1/seed.js' 
+            src='http://localhost:8888/kissy/build/seed-debug.js' 
     {{/if}} 
     ></script>
     <script>
         KISSY.config({
             packages:[{
                 name:'my',
+                {{#if query.min}}
+                    filter:'min',
+                {{else}}
+                    filter:'',
+                {{/if}}
                 {{#if query.concat}}
-                    path:'/statics/build-concat'
+                    path:'/statics/build-concat/my'
                 {{else}}
                     {{#if query.combo}}
-                        path:'/statics/build-combo'
+                        path:'/statics/build-combo/my'
                     {{else}}
-                        path:'/statics/src'
+                        path:'/statics/src/my'
                     {{/if}}
                 {{/if}}
             }]

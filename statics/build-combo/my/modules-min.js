@@ -1,1 +1,1 @@
-KISSY.config("modules",{"my/adder":{requires:["my/adder.css"]},"my/index":{requires:["my/index.css","event","my/adder","xtemplate/runtime","my/index-xtpl","dom"]}});
+KISSY.config("modules",{"my/adder":{requires:["my/adder.css"]},"my/index":{requires:["my/index.css","event/dom","my/adder","xtemplate/runtime","my/index-xtpl","dom"]}});
